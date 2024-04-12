@@ -1,15 +1,15 @@
-package ui.home
+package ui.programs
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import components.home.HomeComponent
+import components.programs.ProgramsComponent
 
 @Composable
-fun HomeScreen(component: HomeComponent) {
+fun ProgramsScreen(component: ProgramsComponent) {
 
     val state by component.viewStates.subscribeAsState()
 
-    Text("Home Screen")
+    Text("Programs Screen")
 }

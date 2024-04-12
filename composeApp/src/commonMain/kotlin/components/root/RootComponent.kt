@@ -2,7 +2,7 @@ package components.root
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import components.home.HomeComponent
+import components.bottomNavigation.BottomNavigationComponent
 
 interface RootComponent {
 
@@ -13,6 +13,6 @@ interface RootComponent {
     fun onBackButtonClick()
 
     sealed class Child {
-        data class HomeChild(val component: HomeComponent): Child()
+        data class BottomNavigationChild(val component: BottomNavigationComponent) : Child()
     }
 }

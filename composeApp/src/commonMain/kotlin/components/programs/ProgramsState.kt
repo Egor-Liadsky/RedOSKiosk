@@ -1,7 +1,7 @@
-package components.home
+package components.programs
 
 import utils.LoadingState
 
-data class HomeState(
+data class ProgramsState(
     val productsLoadingState: LoadingState = LoadingState.Loading,
 )

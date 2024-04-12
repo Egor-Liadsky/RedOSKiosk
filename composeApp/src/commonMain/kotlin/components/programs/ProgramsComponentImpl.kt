@@ -1,11 +1,11 @@
-package components.home
+package components.programs
 
 import com.arkivanov.decompose.ComponentContext
 import components.BaseComponent
 import org.koin.core.component.KoinComponent
 
-class HomeComponentImpl(
+class ProgramsComponentImpl(
     componentContext: ComponentContext,
-) : BaseComponent<HomeState>(componentContext, HomeState()), HomeComponent, KoinComponent {
+) : BaseComponent<ProgramsState>(componentContext, ProgramsState()), ProgramsComponent, KoinComponent {
 
 }

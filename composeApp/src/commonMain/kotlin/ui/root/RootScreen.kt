@@ -10,7 +10,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import components.root.RootComponent
-import ui.home.HomeScreen
+import ui.bottomNavigation.BottomNavigationScreen
 
 @Composable
 fun RootScreen(
@@ -29,7 +29,7 @@ fun RootScreen(
             animation = stackAnimation(fade())
         ) {
             when (val child = it.instance) {
-                is RootComponent.Child.HomeChild -> HomeScreen(component = child.component)
+                is RootComponent.Child.BottomNavigationChild -> BottomNavigationScreen(child.component)
             }
         }
     }

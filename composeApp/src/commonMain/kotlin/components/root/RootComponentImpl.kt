@@ -7,7 +7,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.value.Value
 import components.BaseComponent
-import components.home.HomeComponentImpl
+import components.bottomNavigation.BottomNavigationComponentComponentImpl
 import kotlinx.serialization.Serializable
 import org.koin.core.component.KoinComponent
 
@@ -21,7 +21,7 @@ class RootComponentImpl(
         childStack(
             source = navigation,
             serializer = Config.serializer(),
-            initialConfiguration = Config.Home,
+            initialConfiguration = Config.BottomNavigation,
             childFactory = ::childFactory
         )
 
@@ -34,20 +34,18 @@ class RootComponentImpl(
         componentContext: ComponentContext
     ): RootComponent.Child =
         when (config) {
-            Config.Home -> homeComponent(componentContext)
+            Config.BottomNavigation -> bottomNavigationComponent(componentContext)
         }
 
-
-    private fun homeComponent(componentContext: ComponentContext): RootComponent.Child =
-        RootComponent.Child.HomeChild(
-            HomeComponentImpl(componentContext = componentContext)
+    private fun bottomNavigationComponent(componentContext: ComponentContext): RootComponent.Child =
+        RootComponent.Child.BottomNavigationChild(
+            BottomNavigationComponentComponentImpl(componentContext = componentContext)
         )
-
 
     @Serializable
     private sealed interface Config {
 
         @Serializable
-        data object Home : Config
+        data object BottomNavigation : Config
     }
 }

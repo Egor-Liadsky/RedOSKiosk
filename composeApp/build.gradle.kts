@@ -1,9 +1,11 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    
+    id("kotlinx-serialization")
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.buildKonfig)
 }
 
 kotlin {
@@ -13,8 +15,15 @@ kotlin {
         val desktopMain by getting
         
         commonMain.dependencies {
+            implementation(libs.decompose)
+            implementation(libs.decompose.compose)
+            implementation(libs.koin.compose)
+            implementation(libs.bundles.ktor.common)
+
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.io.core)
+
             implementation(compose.runtime)
-            implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
             implementation(compose.components.resources)
@@ -22,10 +31,19 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.ktor.client.java)
+            implementation(libs.kotlinx.coroutines.swing)
         }
     }
 }
 
+buildkonfig {
+    packageName = "com.lyadsky.sportik"
+
+    defaultConfigs {
+        buildConfigField(Type.STRING, "BASE_URL", "http://localhost:8087/api/")
+    }
+}
 
 compose.desktop {
     application {

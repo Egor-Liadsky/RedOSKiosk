@@ -38,7 +38,7 @@ kotlin {
 }
 
 buildkonfig {
-    packageName = "com.lyadsky.sportik"
+    packageName = "com.turtleteam.red_os_kiosk"
 
     defaultConfigs {
         buildConfigField(Type.STRING, "BASE_URL", "http://localhost:8087/api/")
